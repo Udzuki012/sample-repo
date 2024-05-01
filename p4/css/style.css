@@ -1,0 +1,338 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+body {
+  color: #333;
+  font-family: "游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  letter-spacing: 0.1em;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+li {
+  list-style: none;
+}
+/*
+コンテンツ幅を設定するための共通クラス
+*/
+.wrapper {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+/*
+セクションタイトル用の共通クラス
+*/
+.section-title {
+  font-size: 2.25rem;
+  margin-bottom: 100px;
+  text-align: center;
+  position: relative;
+}
+/* 疑似要素でタイトル下に下線を引く */
+.section-title::after {
+  content: "";
+  width: 100px;
+  height: 3px;
+  background-color: #333;
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+#header {
+  height: 100px;
+  padding: 40px 0 0 50px;
+}
+#header .site-title {
+  width: 100px;
+  line-height: 1px;
+}
+#header .site-title a {
+  display: block;
+}
+
+/*
+ハンバーガ―メニュー
+*/
+.hamburger {
+  width: 100px;
+  height: 100px;
+  background-color: #ff2a2a;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+/* ハンバーガーメニューの線の設定（メニューが閉じている時） */
+.hamburger span {
+  width: 50px;
+  height: 2px ;
+  background: #fff;
+  position: absolute;
+  left: 25px;
+  transition: 0.3s ease-in-out;
+}
+
+/*
+メニューの設定
+最初は閉じている状態なので、「opacity: 0;」「visibility: hidden;」
+で要素を非表示にしておく
+*/
+#navi {
+  width: 100%;
+  height: 100vh;
+  background-color: #ff2a2a;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  visibility: hidden;
+}
+/*
+ハンバーガーメニューがクリックされた際に、jQueryで#naviにactiveクラスを追加して、
+メニューを表示させる。
+*/
+#navi.active {
+  opacity: 1;
+  visibility: visible;
+}
+#navi .logo {
+  width: 100px;
+  position: absolute;
+  top: 40px;
+  left: 50px;
+}
+#navi .menu {
+  margin: 80px 0 40px 0;
+}
+#navi .menu li {
+  margin-bottom: 20px;
+}
+#navi .menu a {
+  color: #fff;
+  font-weight: bold;
+}
+#navi .btn {
+  width: 190px;
+  border: solid 1px #fff;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  padding: 15px 0;
+  margin: 0 auto;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+
+/*-------------------------------------------
+Mainvisual
+-------------------------------------------*/
+#mainvisual {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+}
+/*
+テキストとボタンが画像の上に表示されるように「z-index」を設定
+*/
+#mainvisual .pdata {
+  position: absolute;
+  top: 5%;
+  left: 2.8125%;
+  z-index: 30;
+}
+
+#mainvisual .pdata .popup {
+  position: absolute;
+  top: 54px;
+  left: 138px;
+  height: 864px;
+  width: 1536px;
+  z-index: 100;
+  background-color: #e0e0e0;
+  border: 4px solid;
+  border-color: #031de2;
+  
+  opacity: 0;
+  visibility: hidden;
+}
+
+#mainvisual .pdata .popup .close {
+  position: absolute;
+  top: -27px;
+  right: -27px;
+  height: 108px;
+  width: 108px;
+  z-index: 105;
+  background-color: #404040;
+  border: 4px solid;
+  border-color: #000000;
+}
+
+#mainvisual .pdata .popup .close:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#mainvisual .pdata .popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#mainvisual .pdata .icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+}
+
+#mainvisual .pdata .icon.active {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#mainvisual .pdata .icon_b {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 15;
+}
+
+#mainvisual .pdata .icon:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#mainvisual .pdata .pframe {
+  position: relative;
+  top: 13.5px;
+  left: 135px;
+  background-color: #e0e0e0;
+  height: 108px;
+  width: 471px;
+}
+
+#mainvisual .pdata .pframe .pname {
+  position: absolute;
+  top: 50%;
+  font-size: 2.875rem;
+  font-weight: bold;
+  padding-left: 30px;
+  text-shadow: 0 4px 6px #fff;
+  transform: translate(0, -50%);
+}
+
+#mainvisual .character {
+  position: absolute;
+  top: 20%;
+  z-index: 10;
+  border: 4px solid;
+  border-color: #000000;
+}
+
+#mainvisual .bunner {
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  z-index: 20;
+}
+
+#mainvisual .bunner .icon {
+  position: relative;
+  top: 0%;
+  left: 0%;
+  z-index: 30;
+}
+
+#mainvisual .bunner .icon:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#mainvisual .info {
+  position: absolute;
+  top: 60%;
+  right: 5%;
+  z-index: 20;
+  display:flex;
+}
+
+#mainvisual .info .icon{
+  position: relative;
+  top: 0%;
+  left: 0%;
+  z-index: 20;
+  padding-left: 30px;
+}
+
+#mainvisual .info .icon:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#mainvisual .footer {
+  position: absolute;
+  top: 80%;
+  height: 20%;
+  width: 100%;
+  z-index: 10;
+  background-color: #e0e0e0;
+  display:flex;
+}
+
+#mainvisual .footer .link {
+  position: relative;
+  top: 0%;
+  height: 100%;
+  width: 20%;
+  z-index: 20;
+  background-color: #e0e0e0;
+  border: 4px solid;
+  border-color: #031de2;
+}
+
+#mainvisual .footer .link:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+  z-index: 30;
+}
+
+#mainvisual .footer .link .text {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  font-size: 2.875rem;
+  font-weight: bold;
+  text-shadow: 0 4px 6px #fff;
+  transform: translate(0, -50%);
+}
+
+#mainvisual .background li {
+  width: 100%;
+  top: 0;
+  right: 0;
+}
